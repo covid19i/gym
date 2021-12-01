@@ -57,7 +57,7 @@ class MujocoEnv(gym.Env):
         self.data = self.sim.data
         self.viewer = None
         self._viewers = {}
-        modder = TextureModder(sim)
+        modder = TextureModder(self.sim)
 
         t = 0
 
