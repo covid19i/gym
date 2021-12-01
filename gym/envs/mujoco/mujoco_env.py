@@ -52,10 +52,23 @@ class MujocoEnv(gym.Env):
             raise OSError(f"File {fullpath} does not exist")
         self.frame_skip = frame_skip
         self.model = mujoco_py.load_model_from_path(fullpath)
+        
         self.sim = mujoco_py.MjSim(self.model)
         self.data = self.sim.data
         self.viewer = None
         self._viewers = {}
+        modder = TextureModder(sim)
+
+        t = 0
+
+        while True:
+            for name in self.sim.model.geom_names:
+                modder.rand_all(name)
+
+            #viewer.render()
+            t += 1
+            if t > 100 and os.getenv('TESTING') is not None:
+                break
 
         self.metadata = {
             "render.modes": ["human", "rgb_array", "depth_array"],
