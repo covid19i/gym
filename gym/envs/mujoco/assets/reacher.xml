@@ -1,5 +1,21 @@
 <mujoco model="reacher">
 	<compiler angle="radian" inertiafromgeom="true"/>
+	<!--
+	https://mujoco.readthedocs.io/en/latest/XMLreference.html
+	https://mujoco.readthedocs.io/en/latest/modeling.html
+	https://mujoco.readthedocs.io/en/latest/overview.html#types-names-ids
+	https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Dag_Texture_1_%28Optical_Flare%29.png/640px-Dag_Texture_1_%28Optical_Flare%29.png
+
+	-->
+	<asset>
+		<texture builtin="flat" name="base_tex_cube" height="32" width="32" rgb1="1 1 1" type="cube"></texture>
+		<!-- builtin="flat" was a bug when including .png files below -->
+		<texture name="base_tex_2d" height="32" width="32" rgb1="1 1 1" type="2d" file="dag.png"></texture>
+		<texture  name="beetle_tex_2d" height="32" width="32" rgb1="1 1 1" type="2d" file="beetle.png"></texture>
+		<texture  name="forest_tex_2d" height="32" width="32" rgb1="1 1 1" type="2d" file="forest.png"></texture>
+		<texture  name="sep_forest_tex_2d" height="32" width="32" rgb1="1 1 1" type="2d" file="september_forest.png"></texture>
+		<material name="base_mat" shininess="0.3" specular="0.75" texture="sep_forest_tex_2d"></material>
+	</asset>
 	<default>
 		<joint armature="1" damping="1" limited="true"/>
 		<geom contype="0" friction="1 0.1 0.1" rgba="0.7 0.7 0 1"/>
@@ -7,7 +23,7 @@
 	<option gravity="0 0 -9.81" integrator="RK4" timestep="0.01"/>
 	<worldbody>
 		<!-- Arena -->
-		<geom conaffinity="0" contype="0" name="ground" pos="0 0 0" rgba="0.9 0.9 0.9 1" size="1 1 10" type="plane"/>
+		<geom conaffinity="0" contype="0" name="ground" pos="0 0 0" material="base_mat" rgba="0.9 0.9 0.9 1" size="1 1 10" type="plane"/>
 		<geom conaffinity="0" fromto="-.3 -.3 .01 .3 -.3 .01" name="sideS" rgba="0.9 0.4 0.6 1" size=".02" type="capsule"/>
 		<geom conaffinity="0" fromto=" .3 -.3 .01 .3  .3 .01" name="sideE" rgba="0.9 0.4 0.6 1" size=".02" type="capsule"/>
 		<geom conaffinity="0" fromto="-.3  .3 .01 .3  .3 .01" name="sideN" rgba="0.9 0.4 0.6 1" size=".02" type="capsule"/>
