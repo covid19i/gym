@@ -14,7 +14,7 @@
 		<texture  name="beetle_tex_2d" height="32" width="32" rgb1="1 1 1" type="2d" file="beetle.png"></texture>
 		<texture  name="forest_tex_2d" height="32" width="32" rgb1="1 1 1" type="2d" file="forest.png"></texture>
 		<texture  name="sep_forest_tex_2d" height="32" width="32" rgb1="1 1 1" type="2d" file="september_forest.png"></texture>
-		<material name="base_mat" shininess="0.3" specular="0.75" texture="sep_forest_tex_2d"></material>
+		<material name="base_mat" shininess="0.3" specular="0.75" texture="base_tex_cube"></material>
 	</asset>
 	<default>
 		<joint armature="1" damping="1" limited="true"/>
